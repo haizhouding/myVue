@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>01_hellovue</title>
+</head>
+<script src="./lib/vue.js"></script>
+<body>
+	<div id="app">
+		<input type="text" name="" v-model="mg"/>
+		<h1 v-text="mg"></h1>
+		<h2 v-text="mg"></h2>
+		<h3 v-text="mg"></h3>
+	</div>
+	<script type="text/javascript">
+		//  原生DOM操作
+		// var input = document.querySelector('input');
+		// var h1 = document.querySelector('h1');
+		// var h2 = document.querySelector('h2');
+		// var h3 = document.querySelector('h3');
+		// input.oninput = function () {
+		// 	h1.innerHTML = this.value;
+		// 	h2.innerHTML = this.value;
+		// 	h3.innerHTML = this.value;
+		// }
+		//  用Vue实现以上功能
+		new Vue({
+			el: '#app',
+			data: {
+				mg: ''
+			}
+		});
+	</script>
+</body>
+</html>
