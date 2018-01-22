@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>22_手势</title>
+    <style>
+        #box{
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+    </div>
+    <script>
+        var box = document.querySelector('#box');
+        // 测试click事件在移动端是否生效
+        box.onclick = function (e) {
+            // console.log('-- click --');
+            // alert('-- click --');
+
+            // console.log(e);
+        }
+        
+        // 移动端手势之 按下触发
+        box.ontouchstart = function (e) {
+            // console.log('-- start --');
+            // alert('-- start --');
+            // console.log(e);
+            showTouchLength(e);
+        }
+
+        // 移动端手势之 移动触发
+        box.ontouchmove = function () {
+            // console.log('-- move --');
+        }
+
+        // 移动端手势之 结束（手指离开）触发
+        box.ontouchend = function (e) {
+            // console.log('-- end --');
+            showTouchLength(e);
+        }
+
+        // 移动端手势之 被打断时（来电话等）触发
+        box.ontouchcancel = function () {
+            alert('打断啦！！！！');
+        }
+
+        // 
+        var touchesH1 = document.querySelectorAll('h1')[0];
+        var targetTouchesH1 = document.querySelectorAll('h1')[1];
+        var changedTouchesH1 = document.querySelectorAll('h1')[2];
+
+        // 
+        function showTouchLength (e) {
+            touchesH1.innerHTML = 'touches：' + e.touches.length;
+            targetTouchesH1.innerHTML = 'targetTouches：' + e.targetTouches.length;
+            changedTouchesH1.innerHTML = 'changedTouches：' + e.changedTouches.length;
+        }
+
+    
+    </script>
+</body>
+</html>

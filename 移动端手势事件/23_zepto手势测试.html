@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>23_zepto手势测试</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+    <script src="./zepto.js"></script>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = $('#box');
+        // console.log(box);
+        // 点击事件
+        // box.tap(function () {
+        //     console.log('-- tap --');
+        // });
+
+        // 单击
+        box.singleTap(function () {
+            console.log('-- singleTap --');
+        });
+
+        // 双击
+        box.doubleTap(function () {
+            console.log('-- doubleTap --');
+        });
+
+        // 长按
+        box.longTap(function () {
+            console.log('-- longTap --');
+        });
+
+        // 滑过（任何方向）
+        box.swipe(function () {
+            console.log('-- swipe --');
+        });
+
+        // 测试一个左滑，其他省略了。。
+        box.swipeLeft(function () {
+            console.log('-- swipeLeft --');
+        });
+    </script>
+</body>
+</html>
