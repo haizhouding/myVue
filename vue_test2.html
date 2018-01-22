@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{ obj.foo }}</p>
+        <!-- 这里的 `obj.foo` 不会更新！ -->
+        <button @click="obj.foo = 'baz'">Change it</button>
+    </div>
+
+    <script>
+       var obj = {
+        foo: 'bar'
+      }
+      
+      Object.freeze(obj)
+      
+      new Vue({
+        el: '#app',
+        data: {
+            message: '123',
+            obj,
+            name: '234'
+        }
+        
+      })
+    </script>
+</body>
+</html>
