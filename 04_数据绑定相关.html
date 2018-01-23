@@ -18,8 +18,20 @@
         <!-- v-model -->
         <!-- v-model 可以用于实现数据双向绑定,即更新view,一般用于各种表单标签 -->
         <input type="text" v-model='msg_2'>
-        <p v-text='msg_2'></p>
-        
+        <input type="text" v-model='msg_2'>
+        <p v-text="msg_2"></p>
+        <!-- v-once 指令只会渲染页面一次 -->
+        <h1 v-once >v-once:{{msg_2}}</h1>
+        <!-- 如果想要绑定属性的话， 需要使用v-bind指令 -->
+        <h1 v-bind:title="msg_3">{{msg_3}}</h1>
+        <!-- 简写如下 -->
+        <h1 :title="msg_3"> {{msg_3}}</h1>
+        <input type="text" :title="msg_3" v-model="msg_3" :value="msg_2" >
+        <!-- 如果多个属性可以使用对象的形式绑定 -->
+        <h1 :title="msg_3" :id="msg_id" :value="msg_3">
+            nihao 
+        </h1>
+        <input type="text" v-bind="{id: 'msg_id', title:'msg_3', value: 'msg_3'}" />
     </div>
 
     <script>
@@ -27,7 +39,10 @@
             el: "#app",
             data: {
                 msg_1: '你好',
-                msg_2:'请输入名字'
+                msg_2:'请输入名字',
+                msg_3: '信息3',
+                msg_id: 'a'
+
             }
         })
     </script>
