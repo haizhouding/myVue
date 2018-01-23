@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		table{
+			width: 70%;
+			margin: 0 auto;
+			text-align: center;
+		}
+		div{
+			text-align: center;
+			margin: 20px auto;
+		}
+	</style>
+	<script src="./jquery.js"></script>
+</head>
+<body>
+	<table cellpadding="0" cellspacing="0" border="1">
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>姓别</th>
+				<th>年龄</th>
+				<th>住址</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- <tr>
+				<td>刘升升</td>
+				<td>男</td>
+				<td>18</td>
+				<td>龙乡中区</td>
+            </tr> -->
+            
+		</tbody>
+	</table>
+	<div>
+        <button class="startBtn">首页</button>
+        <button class="preBtn">上一页</button>
+        <!-- <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button> -->
+        <button class="nextBtn">下一页</button>
+        <button class="endBtn">尾页</button>
+	</div>
+
+    <script type="text/javascript">
+        // $.get('http://10.0.157.237:8888/city', function (data) {
+        //     console.log(data);
+        // });
+
+        // $.getJSON('http://10.0.157.205:8888/getOneList', function (data) {
+        //     console.log('-------');
+        //     console.log(data);
+        // });
+		$.ajax({
+            url: 'http://127.0.0.1:8888/loadUserList',
+            type: 'get',
+            dataType: 'json',
+            cache: false,
+            data: {pageNum: 1, pageSize: 10},
+            success(result) {
+                console.log(result);
+                // 计算显示页码按钮数量
+                var btnCount = parseInt(result.pageCount) / 10;
+                var btnStr = '';
+                for (var i = 0; i < btnCount; i++) {
+                    btnStr += '<button>' + (i + 1) + '</button>';
+                }
+                $(btnStr).insertAfter('.preBtn');
+
+                // 初始化数据
+                for (var userObj of result.userList) {
+                     // 创建tr
+                    var $tr = $('<tr></tr>').appendTo('tbody');
+                    // 姓名td
+                    $('<td>' + userObj.name + '</td>').appendTo($tr);
+                    // 性别td
+                    $('<td>' + userObj.sex + '</td>').appendTo($tr);
+                    // 年龄td
+                    $('<td>' + userObj.age + '</td>').appendTo($tr);
+                    // 地址td
+                    $('<td>' + userObj.addr + '</td>').appendTo($tr);
+                }
+               
+            }            
+        });
+	</script>
+
+</body>
+</html>
