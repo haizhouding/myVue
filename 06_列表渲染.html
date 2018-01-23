@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-for 指令可以通过数据列表渲染福哦个当前标签 -->
+        <button v-for="num in nums" v-text="num"></button><br />
+        <button v-for="(num, index) in nums" >{{index + 1 + '---' + num}}</button><br />
+        <!-- 遍历对象  -->
+        <button v-for="value in person">{{value}}</button><br />
+        <button v-for="(value, key) in person">{{key}}---{{value}}</button><br />
+        <button v-for="(value, key, index) in person">{{index}}:{{key}}---{{value}}</button>
+        <!-- 嵌套遍历对象数组，渲染表格 -->
+        <table border="1" cellspacing="0" cellpadding="10">
+            <tr v-for="(obj, index) in friends">
+                <td>{{index + 1}} </td>
+                <td v-for="value in obj">{{value}}</td>
+            </tr>
+        </table>
+        <button v-for="num in 10">{{num}}</button>
+
+        <!-- 还可以在遍历中加条件过滤 -->
+        <br />
+        <button v-for="num in 10" v-if="num >= 5">{{num}}</button>
+
+
+        <!-- 跨元素的遍历 -->
+        <div v-for="movie in movies">
+            <h1 v-for="value in movie">{{value}}</h1>
+        </div>
+        <ul>
+            <template v-for="movie in movies">
+               <!-- <li v-for="value in movie">{{value}}</li>  -->
+               <li>{{movie.id}}</li>
+               <li>{{movie.label}}</li>
+            </template>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                nums:[10, 20, 30, 40, 50],
+                person: {
+                    name: '海舟',
+                    age: 18
+                },
+                friends: [
+                    {name: '小黑', age: 19},
+                    {name: '小黄', age: 20},
+                    {name: '小白', age: 21}
+                ],
+                movies: [
+                    {id: '001', label: '无问西东'},
+                    {id: '002', label: '前任攻略2'},
+                    {id: '003', label: '芳华'}
+                ]
+            }
+        })
+        console.log(vm.nums);
+    </script>
+</body>
+</html>

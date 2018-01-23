@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件相关Vue</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="box" v-show="is_show"></div>
+        <button v-on:click="change">{{text}}</button>
+        <!-- 简写方式------ -->
+        <button @click="change">{{text}}</button>
+        <!-- 如果处理的逻辑非常简单，可以直接写js表达式，不需要定义方法 -->
+        <h1 v-show="is_show2">我还是一个H1</h1>
+        <button @click="is_show2= !is_show2">点击</button>
+        <!-- 可以传参以及获取事件对象 -->
+        <br>
+        <!-- $event是时间对象 -->
+        <button @click="fn(10, $event)">传参测试</button>
+
+        <!-- 综合小程序 -->
+        <br />
+        <input type="text" v-model="msg">
+        <button @click="saveMsg">留言</button>
+        <!-- <h1>{{msg}}</h1> -->
+        <ul>
+            <li v-for="(m, index) in msgArr" >{{index + 1 + ' : ' + m }}</li>
+        </ul>
+
+        <!--可以使用事件的修饰符 -->
+        <div @click="divFn">
+            <button @click="btnFn">正常产生事件冒泡</button>
+            <!-- 可以使用stop来阻止事件冒泡 -->
+            <button @click.stop="btnFn">取消事件冒泡</button>
+            <a href="#" @click="aFn">默认事件行为</a>
+            <!-- 使用prevent修饰符来阻止默认事件行为 -->
+            <a href="#" @click.prevent="aFn">默认事件行为</a>
+            <a href="#" @click.stop.prevent="aFn">默认事件行为</a>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                is_show: true,
+                text: "隐藏",
+                is_show2: true,
+                msg: "",
+                msgArr: [] 
+            },
+            methods: {
+                change() {
+                    this.is_show = !this.is_show;
+                    this.is_show? this.text = "隐藏" : this.text = "显示";
+                    // if (this.is_show) {
+                    //     this.is_show = !this.is_show;
+                    //     this.text = "显示";
+                    // } else {
+                    //     this.is_show = !this.is_show;
+                    //     this.text = "隐藏";
+                    // }
+                     
+                },
+                fn(num, e) {
+                    console.log(num, e);
+                },
+                saveMsg() {
+                    // console.log(this.msg);
+                    if(this.msg.trim())this.msgArr.push(this.msg.trim());
+                    
+                    this.msg = "";
+                },
+                divFn() {
+                    console.log('div');
+                },
+                btnFn() {
+                    console.log('btn')
+                },
+                aFn() {
+                    console.log('a')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
