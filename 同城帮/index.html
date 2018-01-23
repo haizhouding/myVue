@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>同城帮主页</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/index.js"></script>
+		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.3&key=ce172851ba16dc27c6d0d126cfb3724e"></script> 
+		<!-- <script src="js/swiper-3.3.1.min"></script> -->
+		<!-- <link rel="stylesheet" href="swiper-3.3.1.min"> -->
+	</head>
+	<body>
+		<div class="top">
+			<div class="top_nav">
+				<div class="top_left">
+					<ul>
+						<li><span id="top_city">北京</span><a class='chooseCity_top' href="###">[切换城市]</a></li>
+						<li><a href="">同城帮首页</a></li>
+						<div id="top_district" class="map_district">
+							<p>城市列表</p>
+							<button id="closeMap_top" >关闭  X</button>
+							<table>
+								<tr>
+									<td>热门</td>
+									<td class="hotCityTd"></td>	
+								</tr>
+								<tr>
+									<td>拼音</td>
+									<td class="allCityTd">
+										<p></p>
+										<p></p>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</ul>
+				</div>
+				<div class="top_right">
+					<ul>
+						<li><a href="">登陆</a></li>
+						<li><a href="">注册</a></li>
+						<li><a href="">我的订单</a></li>
+						<li><a href="">在线客服（9:00-21:00）</a></li>
+						<li>
+							客户服务
+							<div>
+								<p><a href="">帮助中心</a></p>
+								<p><a href="">维修付款</a></p>
+							</div>
+						</li>
+						<li>论坛</li>
+						<li>投诉建议</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+		<div class="logo_nav">
+			<div class="logo">
+				<a href="#"><h1>同城帮</h1></a>
+			</div>
+			<div class="nav">
+				<ul>
+					<li><a href="../tongchengbang-mingxiong/TCB/tongchengbang_html/二手优品.html">二手优品</a>
+						<img src="https://p.ssl.qhimg.com/t01198d7629a60c4940.png" alt="" />
+					</li>
+					<li><a href="">手机回收</a></li>
+					<li><a href="../lin/xuexi/xuexi/html/维修.html">手机维修</a></li>
+					<li><a href="">电脑维修</a></li>
+					<li><a href="">以旧换新</a></li>
+					<li><a href="">手机租用</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-----------------banner-------------------------->
+		<div class="banner">
+			<div class='container'>
+				<!-- <div class="inner_div ds"> -->
+					<a href="javacript:;"><img src="http://p7.qhmsg.com/t01080757ebeb09256f.png" alt="" /></a>	
+					<a href="javacript:;"><img src="http://p4.qhmsg.com/t01d94d4561d075733c.jpg" alt="" /></a>
+					<a href="javacript:;"><img src="http://p4.qhmsg.com/t010277e84ce18b98b6.png" alt="" /></a>
+					<a href="javacript:;"><img src="http://p6.qhmsg.com/t019f09cd1c5850e1a7.png" alt="" /></a>
+				<!-- </div> -->
+
+				<!-- <div class="inner_div">
+					<a href="javacript:;"><img src="http://p7.qhmsg.com/t01080757ebeb09256f.png" alt="" /></a>	
+					<a href="javacript:;"><img src="http://p4.qhmsg.com/t01d94d4561d075733c.jpg" alt="" /></a>
+					<a href="javacript:;"><img src="http://p4.qhmsg.com/t010277e84ce18b98b6.png" alt="" /></a>
+					<a href="javacript:;"><img src="http://p6.qhmsg.com/t019f09cd1c5850e1a7.png" alt="" /></a>
+				</div> -->
+			</div>
+			<div class="dot">
+				<span class="dot2" >0</span>
+				<span class="dot1" >-1200</span>
+				<span class="dot1" >-2400</span>
+				<span class="dot1" >-3600</span>
+			</div>
+			<ul >
+				<li id="repair_phone" class="repair_li">
+					<a href="">修手机/Pad</a>
+					<span class="arrow1"></span>
+				</li>
+				<li id="repair_pc" class="pc_li">
+					<a href="">修电脑</a>
+					<span class="arrow1"></span>
+				</li>
+				<li id="sell_phone" class="sell_li">
+					<a href="">卖手机/卖电脑</a>
+					<span class="arrow1"></span>
+				</li>
+				<li id="buy_phone" class="buy_li">
+					<a href="">买二手机</a>
+					<span class="arrow1"></span>
+				</li>
+			</ul>
+		</div>
+<!-- ---------------------main----------------------- -->
+		<div class="main clearfixed">
+			<div class="repair clearfixed">
+					<a href="">
+						<img src="https://p.ssl.qhimg.com/t01aad5c130b8653368.jpg" alt="" />
+					</a>
+					<a href="">
+						<img src="https://p.ssl.qhimg.com/t01dc8f9631026e7e17.jpg" alt="" />
+					</a>
+					<a href="">
+						<img src="https://p.ssl.qhimg.com/t013b648422d14559d0.png" alt="" />
+					</a>
+					<a href="">
+						<img src="https://p.ssl.qhimg.com/t01fc1fd0e5522663ba.jpg" alt="" />
+					</a>
+			</div>
+			
+			
+			<div class="recycle">
+				<div class="title_rec"><h2>热门手机回收</h2><span><a href="">查看更多</a></span></div>
+				<ul id="recycle_ul">
+					<li>
+						<a href="#">
+						<img src="https://p.ssl.qhimg.com/t01a10599c63e402740.png" alt="" />
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="best clearfixed">
+				<div class="title_best"><h2>优选精品</h2><span><a href="">查看更多</a></span></div>
+				<ul id="best_ul">
+					<li>
+						<a href="#">
+						<img src="http://p3.qhimg.com/t015c27655049610a67.png" alt="" />
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="title_shop"><h2>到店维修</h2></div>
+		</div>
+<!-- ----------------------shops--------------------- -->
+		<div class="shops clearfixed" >
+			<div class="left_shop">
+				<div class="filter clearfixed">
+					<p id="province">北京</p>
+					<p id="county">选择区县</p>
+					<input type="text" placeholder='输入您的位置查找附近的商家'>
+					<p>搜索</p>
+				</div>
+
+				<div id="shop_district" class="map_district">
+					<p>城市列表</p>
+					<button id="closeMap_shop" >关闭  X</button>
+					<table>
+						<tr>
+							<td>热门</td>
+							<td class="hotCityTd"></td>	
+						</tr>
+						<tr>
+							<td>拼音</td>
+							<td class="allCityTd">
+								<p></p>
+								<p></p>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="shop_county">
+					<p>区县列表</p>
+					<button id="close_county" >关闭  X</button>
+					<div>
+					</div>
+				</div>
+
+				<div class="choose">
+					<span id='default' class='checked'>默认排序</span>
+					<span id="deals">按成交量</span>
+					<span id="visits">按人气</span>
+					<span>
+						<input type="checkbox" id="giveFirst">
+						先行赔付
+					</span>
+					<p class="map" onselectstart="return false">地图模式 </p>
+					
+					<div class="gaodeMap">
+						<p>地图模式<i>X</i></p>
+						<div id="container" class="mainMap"></div>
+						<div id="mapPages"></div>
+					</div>
+				</div>
+
+				<div id="shop_display">
+					<!-- <div class="everyShop clearfixed">
+						<img src=".\img\t01f32edb876831c950.jpg" alt="">
+						<div class="mid">
+							<p><span>明宏电子维修</span> 店铺等级 :<em>96</em></p>
+							<p><a href="">主营 : 好久发士大夫撒地方啊手动发士大夫撒地方啊手动sdfas阀阿斯顿发阀阿斯顿发顺丰的啊手动阀爱的色放</a></p>
+							<p><a href="">地址 : 好久发士大夫撒地方啊手动发士大夫撒地方啊手动sdfas阀阿斯顿发阀阿斯顿发顺丰的啊手动阀爱的色放</a></p>
+						</div>
+						<div class="right">
+							<p>先行赔付</p>
+							<p>同城帮认证</p>
+							<p>人气 : <span></span>次浏览</p>
+						</div>
+						<div class="enter">进入店铺</div>
+					</div> -->
+				</div>
+				<div id="pages">
+					<!-- <p> -->
+						<!-- <span class="first_page">首页</span>
+						<span class="pre_page"><<上一页</span>
+						<span class="pageNum">1</span>
+						<span class="pageNum">2</span>
+						<span class="pageNum">3</span>
+						<span class="pageNum">4</span>
+						<span class="pageNum">5</span>
+						<span class="pageNum">6</span>
+						<span class="pageNum">7</span>
+						<span class="pageNum">8</span>
+						<span class="pageNum">9</span>
+						<span class="pageNum">10</span> -->
+						<!-- <span>13</span> -->
+						<!-- <span class="next_page">下一页>></span>
+						<span class="last_page">尾页</span> -->
+					<!-- </p> -->
+					
+				</div>
+			</div>
+
+
+
+			<div class="right_shop">
+				<h3>商家好评榜</h3>
+				<div class= "good_shop">
+					<!-- <div class="index">1</div>
+					<div class="shop_img"><a href=""><img src="C:\Users\Administrator.USER-20171023TY\Desktop\同城帮\img\t01f32edb876831c950.jpg" alt=""></a></div>
+					<div class="right">	
+						<p><a href="">海洋科技</a></p>
+						<p>12313条评论</p>
+					</div> -->
+				</div>
+				
+			</div>
+		</div>
+		<div class = 'footer clearfixed'>
+			<div class="foot_notice">
+				<ul>
+					<li>
+						<h2>购物指南</h2>
+						<p><a href="">购物流程</a></p>
+						<p><a href="">帮助文档</a></p>
+					</li>
+					<li>
+						<h2>支付方式</h2>
+						<p><a href="">在线支付、当面付款</a></p>
+					</li>
+					<li>
+						<h2>售后服务</h2>
+						<p><a href="">投诉建议</a></p>
+						<p><a href="">售后说明</a></p>
+					</li>
+					<li>
+						<h2>商家合作</h2>
+						<p><a href="">加盟同城帮</a></p>
+						<p><a href="">新闻采访/跨界合作</a></p>
+					</li>
+				</ul>
+			</div>
+			<div class="claims">
+				<p>客服电话：4000-399-360 / 010-53767360 <a href="">投诉建议</a> <a href="">网站地图</a></p>	
+				<p>Copyright © 2005-2018  360.CN  All Rights Reserved  360安全中心</p>
+				<p><a href="">京ICP备08010314号-19 </a>   京公网安备110000000006号</p>
+			</div>
+		</div>
+		<div class="brown"></div>
+		<div id="zixun"></div>
+	</body>
+</html>

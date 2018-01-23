@@ -1,0 +1,91 @@
+{
+    "errno": 0,
+    "errmsg": "OK",
+    "result": [
+        {
+            "product_id": "2508430769396736",
+            "model_name": "iPhone 6",
+            "brand_id": "2",
+            "brand_name": "苹果",
+            "price": 1139,
+            "com_price": "5288",
+            "model_id": "97",
+            "mer_id": "8",
+            "thum_img": {
+                "old": "http://p0.qhmsg.com/t01762cb36857b02e3e.jpg",
+                "big": "http://p0.qhmsg.com/t01eb92faa3242cdc9e.jpg",
+                "mid": "http://p0.qhmsg.com/t01404a03ccf262cad8.jpg",
+                "min": "http://p0.qhmsg.com/t01315fdf20806ab408.jpg"
+            },
+            "mer_name": ""
+        },
+        {
+            "product_id": "2508447414705152",
+            "model_name": "iPhone 6S",
+            "brand_id": "2",
+            "brand_name": "苹果",
+            "price": 1599,
+            "com_price": "6088",
+            "model_id": "261",
+            "mer_id": "8",
+            "thum_img": {
+                "old": "http://p0.qhmsg.com/t0161b55808433f15fa.jpg",
+                "big": "http://p0.qhmsg.com/t019d89a43480746c88.jpg",
+                "mid": "http://p0.qhmsg.com/t010af81ab858458035.jpg",
+                "min": "http://p0.qhmsg.com/t01e405e60341821b06.jpg"
+            },
+            "mer_name": ""
+        },
+        {
+            "product_id": "2508505865281536",
+            "model_name": "荣耀V9",
+            "brand_id": "4",
+            "brand_name": "华为",
+            "price": 1639,
+            "com_price": "3499",
+            "model_id": "850",
+            "mer_id": "8",
+            "thum_img": {
+                "old": "http://p0.qhmsg.com/t018797ec19cd403e39.jpg",
+                "big": "http://p0.qhmsg.com/t013854ce42d57c910a.jpg",
+                "mid": "http://p0.qhmsg.com/t0128e23c64119dc270.jpg",
+                "min": "http://p0.qhmsg.com/t013b758f8a56215399.jpg"
+            },
+            "mer_name": ""
+        },
+        {
+            "product_id": "2508521106599936",
+            "model_name": "Nova 2",
+            "brand_id": "4",
+            "brand_name": "华为",
+            "price": 1367,
+            "com_price": "",
+            "model_id": "909",
+            "mer_id": "8",
+            "thum_img": {
+                "old": "http://p0.qhmsg.com/t019653b588d0b9fe1c.jpg",
+                "big": "http://p0.qhmsg.com/t014490ea4614c412cf.jpg",
+                "mid": "http://p0.qhmsg.com/t019cd6ac9e4f8083ea.jpg",
+                "min": "http://p0.qhmsg.com/t017666d59efd8d9f84.jpg"
+            },
+            "mer_name": ""
+        },
+        {
+            "product_id": "2508510929317888",
+            "model_name": "iPhone 6 Plus",
+            "brand_id": "2",
+            "brand_name": "苹果",
+            "price": 1529,
+            "com_price": "6088",
+            "model_id": "98",
+            "mer_id": "8",
+            "thum_img": {
+                "old": "http://p0.qhmsg.com/t018d2ac5a18bb8eca2.jpg",
+                "big": "http://p0.qhmsg.com/t017fea70aecbef7010.jpg",
+                "mid": "http://p0.qhmsg.com/t011acbcf61b6b360a4.jpg",
+                "min": "http://p0.qhmsg.com/t016061466ffa8d04a6.jpg"
+            },
+            "mer_name": ""
+        }
+    ]
+}
