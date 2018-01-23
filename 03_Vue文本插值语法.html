@@ -9,7 +9,20 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{msg}}</h1>
+        <h1>{{msg + '哈哈'}}</h1>
+        <h1>{{'哈哈'}}</h1>
+        <h1>{{msg.split('').join('*')}}</h1>
+        <!--   直接打印的话会直接显示，会调用toLocaleString()方法 -->
+        <h1>{{nums[1] + 3}}</h1>
+        <h1>{{person}}</h1>
+        <!-- 在插值语法中可以是使用数组的方法 -->
+        <!-- 支持三目运算，必须有返回值 -->
+        <h1>{{nums[2] > nums[3]? '大于' : '小于'}}</h1>
+
+        <!-- 一般都会使用点语法来调用对象的属性 -->
+        <h1>{{person.name + '------------' + person.age}}</h1>
+        <h1>{{person.name}}------------{{person.age}}</h1>
+        <!-- 在Vue管理范围之外使用是不好使的， 必须在挂载元素之内 -->
         
     </div>
 
@@ -26,6 +39,25 @@
                 nums: [12, 23, 34, 45]
             }
         });
+        // vm.person.toLocaleString = function () {
+        //     return 0;
+        // }
+        // vm.person.toLocaleString();
+      
+        // vm.person.__proto__.toString = function () {
+        //     var str = '{';
+        //     var i = 1;
+        //     for (var prop in this) {
+        //         str += `"${prop}": "${this[prop]}",`;
+        //         // if (Object.keys(this).length)
+        //     }
+        //     str = str.slice(0 , str.length - 1);
+        //     str += '}';
+        //     return str;
+        // }
+        
+        // console.log(vm.person.toString());
+        console.log(vm.person.valueOf());
         
     </script>
 </body>

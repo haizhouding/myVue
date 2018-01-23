@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 数据绑定的方法
+            1、 文本插值方法
+        -->
+        <h1>{{msg_1}}海舟</h1>
+        <!-- v-text 功能和双大括号基本一致， 但是他会全部更新，而{{}}可以选则更新部分 -->
+        <h1 v-text="msg_1">xxxxx</h1>
+        <!-- v-model -->
+        <!-- v-model 可以用于实现数据双向绑定,即更新view,一般用于各种表单标签 -->
+        <input type="text" v-model='msg_2'>
+        <p v-text='msg_2'></p>
+        
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg_1: '你好',
+                msg_2:'请输入名字'
+            }
+        })
+    </script>
+</body>
+</html>
