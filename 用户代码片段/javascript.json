@@ -1,0 +1,26 @@
+{	
+	"console": {
+		"prefix": "console",
+		"body": "console.log($1);"
+	},
+	"vue": {
+		"prefix": "vue",
+		"body": [
+			"var vm = new Vue({",
+			"    el: \"#app\",",
+			"    data: {",
+			"        ",
+			"    }",
+			"})"
+		]
+	},
+	"module": {
+		"prefix": "module",
+		"body": [
+			"angular.module('myApp', [])",
+			"    .controller('MainCtrl', ['$$scope', function ($$scope) {",
+			"    	",
+			"	 }])"
+		]
+	}
+}
