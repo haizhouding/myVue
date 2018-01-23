@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>用户管理</h1>
+            <hr>
+            <table class="table table-striped">
+                    <tr>
+                        <th>编辑</th>
+                        <th>姓</th>
+                        <th>名字</th>
+                        <th>删除</th>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-default"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑</button></td>
+                        <td>刘</td>
+                        <td>升序</td>
+                        <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除</button></td>
+                    </tr>
+                    <tr>
+                        <td><button class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑</button></td>
+                        <td>张</td>
+                        <td>康</td>
+                        <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除</button></td>
+                    </tr>
+            </table>
+            <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>添加新用户</button>
+            <hr>
+            <h2>创建新用户</h2>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">姓</label>
+                    <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="请输入姓">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">名</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPassword3" placeholder="请输入名">
+                    </div>
+                </div>
+            </form>
+            <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>保存</button>
+
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+</body>
+</html>
