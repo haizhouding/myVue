@@ -20,42 +20,106 @@
                         <th>名字</th>
                         <th>删除</th>
                     </tr>
-                    <tr>
-                        <td><button class="btn btn-default"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑</button></td>
-                        <td>刘</td>
-                        <td>升序</td>
-                        <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除</button></td>
-                    </tr>
-                    <tr>
-                        <td><button class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑</button></td>
-                        <td>张</td>
-                        <td>康</td>
-                        <td><button class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除</button></td>
+                    <tr v-for="(msg, index) in msgArr">
+                        <td><button class="btn btn-default" @click="editFn(msg.ln, msg.fn, index)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>编辑</button></td>
+                        <td>{{msg.ln}}</td>
+                        <td>{{msg.fn}}</td>
+                        <td><button class="btn btn-danger" @click="deleteFn(index)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除</button></td>
                     </tr>
             </table>
-            <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>添加新用户</button>
+            <button type="button" class="btn btn-success" @click="addFn"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>创建新用户</button>
             <hr>
-            <h2>创建新用户</h2>
+            <h2>{{btnMsg}}</h2>
             <form class="form-horizontal">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">姓</label>
                     <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="请输入姓">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入姓" v-model="lastName" @click="hidde">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">名</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="请输入名">
+                    <input type="text" class="form-control" id="inputPassword3" placeholder="请输入名" v-model="firstName"
+                    @click="hidde"> 
+                    <span v-show="is_show">输入不能为空</span>
                     </div>
                 </div>
             </form>
-            <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-save" aria-hidden="true"></span>保存</button>
+            <button type="button" class="btn btn-success" @click="saveMsg"><span class="glyphicon glyphicon-save" aria-hidden="true">
+            </span>保存</button>
 
         </div>
     </div>
 
     <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msgArr: [],
+                lastName:'',
+                firstName:'',
+                btnMsg: '创建新用户',
+                index:'',
+                is_show: false
+            },
+            methods: {
+                saveMsg(){
+                    if (this.lastName.trim() && this.firstName.trim()) {
+                        if (this.btnMsg == '创建新用户') {
+                            msgObj = {ln: this.lastName, fn: this.firstName, time: new Date().getTime()}
+                            this.msgArr.push(msgObj);
+                            this.addStorageFn(msgObj);
+
+                        } else {
+                            this.msgArr[this.index].ln = this.lastName;
+                            this.msgArr[this.index].fn = this.firstName;
+                            this.btnMsg = '创建新用户';
+                            this.addStorageFn(this.msgArr[this.index])
+                        };
+                        this.lastName = '';
+                        this.firstName = '';
+                    } else {
+                        this.is_show = true;
+                    }
+                },
+                editFn(a, b, index) {
+                    this.lastName = a;
+                    this.firstName = b;
+                    this.index = index;
+                    this.btnMsg = '编辑';
+                },
+                addFn() {
+                    this.btnMsg = '创建新用户'
+                },
+                deleteFn(index) {
+                    this.index = index;
+                    this.deleteStorageFn();
+                    this.msgArr.splice(this.index,1);
+                },
+                hidde() {
+                    this.is_show = false;
+                },
+                addStorageFn(obj) {
+                    var str = JSON.stringify(obj);
+                    window.localStorage.setItem('msg_' + obj.time, str);
+                },
+                deleteStorageFn() {
+                    var key = 'msg_' + this.msgArr[this.index].time;
+                    console.log(key);
+                    window.localStorage.removeItem(key);
+                },
+                init() {
+                    for (var key in window.localStorage) {
+                        console.log(key);
+                        if (/^msg/.test(key)) {
+                            this.msgArr.push(JSON.parse(window.localStorage.getItem(key)));
+                        }
+                    }
+                }
+            }
+        })
+        vm.init();  
         
     </script>
 </body>
