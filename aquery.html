@@ -20,18 +20,29 @@
         // var a = new aquery();
         // console.log(a);
 
-        function aQuery (a, b) {
-            return new aQuery.prototype.init();
-        }
+        // function aQuery (a, b) {
+        //     return new aQuery.prototype.init();
+        // }
 
-        aQuery.prototype = {
-            init : function () {
-                this.name = "海舟";
-                return this;
-            },
-            name: 20
+        // aQuery.prototype = {
+        //     init : function () {
+        //         // this.name = "海舟";
+        //         return this;
+        //     },
+        //     name: 20
+        // }
+        //  aQuery.prototype.init.prototype = aQuery.prototype;
+
+        // var a =  new aQuery (a, b);
+        // var b = aQuery (a, b);
+        
+        function Person () {
+            this.name = 'a';
+            
+            console.log(this);
+            return this;
         }
-         aQuery.prototype.init.prototype = aQuery.prototype;
-        console.log(aQuery().name)
+        var a = new Person();
+        // console.log(a);
     </script>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>  
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>本地留言板</h1>
+            <hr />
+            <input type="text" class="form-control" placeholder="请输入留言" v-model:value="msgText">
+            <button type="button" class="btn btn-success" v-on:click="addMsg">留言</button>
+            <table class="table table-striped">
+                <th>
+                    <td>留言内容</td>
+                    <td>留言时间</td>
+                    <td>删除留言</td>
+                </th>
+                <tr v-for="(msgObj, index) in msgArr">
+                    <td>{{index + 1}}</td>
+                    <td>{{msgObj.msg}}</td>
+                    <td>{{msgObj.time}}</td>
+                    <td><button class="btn btn-danger" v-on:click="delMsg"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+                </tr>
+            </table>
+            <button class="btn btn-danger">清除所有留言</button>
+        </div>  
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msgArr: [{msg: '你好', time: '2017/2/17  下午8:09:01'}],
+                msgText: ''
+            },
+            methods: {
+                addMsg() {
+                    console.log(this.msgText);
+                    var msgObj = {msg: this.msgText, time: new Date().toLocaleString()};
+                    this.msgArr.push(msgObj);
+
+                },
+                delMsg() {
+
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
