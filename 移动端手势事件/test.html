@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="hidden">
+    
+</body>
+    <script>
+        var array1 = [12 , "foo" , {name: "Joe"} , -2458]; 
+        var array2 = ["Doe" , 555 , 100]; 
+        array1.push(array2);
+        function log (s) {
+            console.log.apply(console, arguments);
+        }
+        log(3,4,4)
+    </script>
+</html>

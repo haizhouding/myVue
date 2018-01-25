@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <style>
+        .class1{
+            color: red;
+        }
+        .class2{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 :class="{class1: isColor, class2: isSize}">{{msg}}</h1>
+        <h1 :class="'class1'">{{msg}}</h1>
+        <h1 :class="[className, 'class2']">{{msg}}</h1>
+        <h1 :style="styleObj">{{msg}}</h1>
+        <h1 :style="{'background-color': 'red', fontSize: '50px'}">{{msg}}</h1>
+
+
+
+        
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: 'Hello',
+                className: 'class1',
+                isColor: false,
+                isSize: true,
+                styleObj: {
+                    'background': 'yellow',
+                    'font-size': '50px'
+                },
+                y: 'yellow'
+            }
+        })
+    </script>
+</body>
+</html>

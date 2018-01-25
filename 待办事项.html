@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>待办事项</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <style>
+      .num{
+          display: inline-block;
+          width: 50px;
+          text-align: center;
+          background: #94F194;
+          border-radius: 5px;
+          margin-left: 10px;
+          color: white;
+      }
+      .pink{
+          background: #F0D1D7;
+      }
+      .red{
+        background: #EE5858;
+      }
+      .msgInput{
+          width: 92%;
+          float: left;
+      }
+      .table{
+          margin-top: 30px;
+      }
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>丁海舟待办事项<span class="num" v-bind:class="classObj">{{numFn}}</span></h1>
+            <hr>  
+            <input type="text" class="form-control msgInput" placeholder="添加任务" v-model="task" />
+            <button type="button" class="btn btn-success" @click="saveTask()">留言</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>详细内容</th>
+                        <th>是否完成</th>
+                        <th>值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="taskObj in taskArr">
+                        <td>{{taskObj.task}}</td>
+                        <td><input type="checkbox" v-model="taskObj.isDone"></td>
+                        <td>{{taskObj.isDone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div> 
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                taskArr: [],
+                task:'',
+                // className: 'numColor',
+                classObj: {
+                    pink: false,
+                    red: false
+                }
+            },
+            computed: {
+                numFn() {
+                    var i = 0;
+                    for (var taskObj of this.taskArr) {
+                        !taskObj.isDone? i++ : i;
+                    }
+                    if ( i < 3) {
+                        this.classObj.pink = false;
+                        this.classObj.red = false;
+                    } else if (i > 10){
+                        this.classObj.red = true;
+                        this.classObj.pink = false;
+                    } else{
+                        this.classObj.red = false;
+                        this.classObj.pink = true;
+                    }
+                    return i;
+                }
+            },
+            methods: {
+                saveTask() {
+                    if (this.task) {
+                        this.taskArr.push({
+                            task: this.task,
+                            isDone: false
+                        })
+                    }
+                    this.task = '';
+                }
+            }
+        })
+        var date = new Date(2012,2,3,12,3,4);
+        // date.setHours(23);
+        // date.setMinutes(23);
+        // date.setSeconds(23);
+        // date.setFullYear(2000);
+        // date.setMonth(11);
+        // date.setDate(23);
+        // date.setDay(6);
+
+        console.log(date.toString());
+    </script>
+</body>
+</html>

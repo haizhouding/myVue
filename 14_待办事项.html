@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>丁海舟的待办事项<span class="label" :class="changeColor">{{ undoneNum }}</span></h1>
+            <hr>  
+            <div>
+                <div class="col-xs-10">
+                    <input type="text"  v-model="task_info" class="form-control" id="exampleInputName2" placeholder="请输入留言">
+                </div>
+                <div class="col-xs-2">
+                    <button type="submit" @click="addTask()" class="btn btn-success">请输入留言</button>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>详细内容</th>
+                        <th>是否完成</th>
+                        <th>值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="taskObj in task_list">
+                        <td>{{ taskObj.task_name }}</td>
+                        <td><input type="checkbox" v-model="taskObj.isDone"></td>
+                        <td>{{ taskObj.isDone | textFomart('哈哈，你')}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                task_info: '',
+                task_list: []
+            },
+            methods: {
+                // 添加任务
+                addTask() {
+                    this.task_list.push({
+                        task_name: this.task_info,
+                        isDone:false
+                    })
+                }
+            },
+            computed: {
+                undoneNum() {
+                    // var count = 0;
+                    if (this.task_list.length == 0) {
+                        return '无任务';
+                    }
+                   return this.task_list.filter(task => !task.taskisDone).length;
+                //    sort();
+                    //  return count;
+                },
+                changeColor() {
+                    if (this.task_list.length == 0) {
+                        return 'label-default';
+
+                    } else {
+                        var num = this.task_list.filter(task => !task.taskisDone).length;
+                        switch(num) {
+                            case 1: return 'label-success';
+                            case 2:
+                            case 3: 
+                            case 4:
+                            case 5:
+                            case 6: return 'label-warning';
+                            case 7:
+                            case 8:
+                            case 9:
+                            case 10: return 'label-warning';
+                            default: return 'label-danger';
+
+                        }
+                    }
+                }
+            },
+            filters: {
+                textFomart(value, text) {
+                   return value ? text + '已完成' : text +'未完成';
+                }
+            }
+        })
+
+
+        // 数组filter() 方法，可以过滤内容，然后返回过滤后的数组
+        var arr = ['123', '23423', '235', '3', '454', '3', '1'];
+        // 需求： 把arr中元素长度大于二的元素找出来，并组成一个新的数组
+        // num就是数组中的每一个元素
+        arr = arr.filter(num => {
+            // console.log(num)；
+            // 把长度大于二的元素放在一个新的数组返回
+           return num.length > 2;
+        });
+        console.log(arr);
+        var arr2 = arr.filter(num => num.length > 2);
+
+    </script>
+</body>
+</html>

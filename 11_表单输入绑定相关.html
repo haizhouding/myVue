@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ msg }}</h1>
+        <!-- 文本框 -->
+        <input type="text" v-model="msg">
+        <!-- 多行文本框 -->
+        <textarea name="" id="" cols="30" rows="10" v-model="msg"></textarea>
+        <!-- 复选框checkbox -->
+        <div>
+            <input type="checkbox" value="A" v-model="msgArr" id="a">
+            <label for="a">A</label>
+            <input type="checkbox" value="B" v-model="msgArr" id="b">
+            <label for="b">B</label>
+            <input type="checkbox" value="C" v-model="msgArr" id="c">
+            <label for="c">C</label>
+            <input type="checkbox" value="D" v-model="msgArr" id="d">
+            <label for="d">D</label>
+            <p>{{ 'msgArr:' + msgArr }}</p>
+        </div>
+        <!--  复选框： 绑定布尔值 -->
+        <template v-for="(person, index) in persons">
+            <input type="checkbox" v-model="person.checked" v-bind:id="'check_' + index">  
+            <label :for="'check_' + index">{{ person.name }}</label>
+        </template>
+        <button @click="checkAll">全选</button>
+        <button @click="checkNone">取消全选</button>
+        <button @click="checkOthers">反选</button>
+        
+
+
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: '',
+                msgArr: [],
+                persons: [
+                    { name: '小雪', checked: false },
+                    { name: '小白', checked: false },
+                    { name: '小黑', checked: false }
+                ]
+            },
+            methods: {
+                checkAll() {
+                    for (var person of this.persons) {
+                        person.checked = true;
+                    };
+                },
+                checkOthers() {
+                    for (var person of this.persons) {
+                        // if (person.checked) {
+                        //     person.checked = false;
+                        // } else {
+                        //     person.checked = true;
+                        // }
+                        person.checked = !person.checked;
+                    };
+                },
+                checkNone() {
+                    for (var person of this.persons) {
+                        person.checked = false;
+                    };
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

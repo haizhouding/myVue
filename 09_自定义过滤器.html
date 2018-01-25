@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09_自定义过滤器</title>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="msg" />
+        <!-- 管道符  后加过滤器 -->
+        <h1>{{msg | cFormat}}</h1>
+        <h1>{{ msg }}</h1>
+        <h1>{{ time }}</h1>
+        <h1>{{ time | timeFormat }}</h1>
+        <!-- 传参数 -->
+        <h1>{{ time | timeFormat("yyyyMMdd hhmmss") }}</h1>
+        <h1>{{ time | timeFormat("yyyyMMadsdd hhsdfasmmss") }}</h1>
+
+    </div>
+
+    <script>
+        
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: 'hello',
+                time: new Date().getTime() + 110302000000
+            },
+            // 自定义本地过滤器，只能在当前组件中使用
+            filters: {
+                // 首字母变成大写的过滤器
+                // 第一个参数为要处理的文本内容
+                cFormat(value) {
+                    console.log(value);
+                    if (!value) {
+                        return "";
+                    }
+                    return value.charAt(0).toUpperCase() + value.slice(1);
+                    // return "wwww";
+                },
+                // 支持传参
+                timeFormat(value, formatType) {
+                    var date = new Date(value),
+                        y = date.getFullYear(),
+                        m = date.getMonth(),
+                        d = date.getDate();
+                    if (!formatType) {
+                        return y + '年' + (m + 1) + '月' + d + '日';
+                    } else {
+                        if (formatType == 'yyyyMMdd') {
+                            return y + '年' + (m + 1) + '月' + d + '日';
+                        } else if (formatType == 'yyyyMMdd hhmmss') {
+                            return y + '年' + (m + 1) + '月' + d + '日' + 
+                            date.getHours() + '时' + date.getMinutes() + '分' + date.getSeconds() + '秒';
+                        } else {
+                            //或者其他格式
+                             return y + '年' + (m + 1) + '月' + d + '日';
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
